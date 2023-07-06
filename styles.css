@@ -16,12 +16,13 @@
     border: 3px solid brown;
     height: 500px;
     width: 500px;
-    background-color: #221818;
-    gap: 2px;
+    background-color: #ffffff;
+    gap: 0px;
 }
 
 .grid-pixel {
-    border: 1px solid rgb(210, 207, 207);
+    border: 0.5pt solid rgba(220, 219, 219, 0.359);
+    /* border: none; */
 }
 
 .draw-settings{
@@ -29,7 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    border: 3px solid rgb(21, 19, 19);
+    border: 3px solid rgb(117, 111, 111);
 }
 
 #grid-settings {
