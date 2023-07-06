@@ -4,21 +4,49 @@ const DefaultColumns= 16;
 const drawingGrid =  document.getElementById('draw-area');
 const gridSizeSlider = document.getElementById('range-slider');
 const gridSizeText = document.getElementById('size-value'); 
+const gridModeValue = document.getElementById('grid-toggle-switch');
 
 createDrawingMatrix(DefaultRows, DefaultColumns);
 
+
+//Listener handling the drawing function while hovering
 drawingGrid.addEventListener('mouseover', function(event) {
     if (event.target.classList.contains('grid-pixel')) {
       event.target.style.backgroundColor = 'red'; 
     }
 });
 
+
+//Event listener handling the grid size text
 gridSizeSlider.addEventListener('input', function(){
     const newSize = this.value;
     gridSizeText.innerHTML = `${newSize} x ${newSize}`;
+})
+
+gridSizeSlider.addEventListener('change', function(){
+    const newSize = this.value;
     createDrawingMatrix(newSize, newSize);
 })
 
+
+//Event listener handling the Grid On/Off status
+gridModeValue.addEventListener('change', function(){
+    const pixels = document.querySelectorAll('.grid-pixel');
+
+    if (gridModeValue.checked){
+        
+        pixels.forEach(pixel => {
+            pixel.classList.add('grid-pixel-border');
+        });
+    }else{
+        pixels.forEach(pixel => {
+            pixel.classList.remove('grid-pixel-border');
+        });
+    }
+})
+
+
+//Creates a matrix of div elements and places them inside the grid area
 function createDrawingMatrix (numRows, numColumns){
     
     drawingGrid.innerHTML = '';
@@ -27,13 +55,13 @@ function createDrawingMatrix (numRows, numColumns){
     for(let i = 0; i < gridMatrix; i++){
         const gridPixel = document.createElement('div');
         gridPixel.classList.add('grid-pixel');
+        if (gridModeValue.checked){
+            gridPixel.classList.add('grid-pixel-border');
+        }
         drawingGrid.appendChild(gridPixel);
     }
     drawingGrid.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
     drawingGrid.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
-
-    // alert(gridSizeSlider.value);
-
 }
 
 

@@ -20,7 +20,7 @@
     gap: 0px;
 }
 
-.grid-pixel {
+.grid-pixel-border {
     border: 0.5pt solid rgba(220, 219, 219, 0.359);
     /* border: none; */
 }
