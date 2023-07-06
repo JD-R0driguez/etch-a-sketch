@@ -1,0 +1,132 @@
+.title {
+    text-align: center;
+    border: 1px solid red;
+    padding: 20px;
+    margin: 10px;
+}
+
+
+#main-body {
+    display:flex;
+    justify-content: space-evenly;
+}
+
+#draw-area {
+    display: grid;
+    border: 3px solid brown;
+    height: 500px;
+    width: 500px;
+    background-color: #221818;
+    gap: 2px;
+}
+
+.grid-pixel {
+    border: 1px solid rgb(210, 207, 207);
+}
+
+.draw-settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 3px solid rgb(21, 19, 19);
+}
+
+#grid-settings {
+    border: 5px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Properties for the Mode Toggle Switch  */
+
+.mode-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.mode-switch input[type="checkbox"] {
+    display: none;
+}
+  
+.mode-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #550a0a;
+    transition: .4s;
+    border-radius: 34px;
+}
+  
+.mode-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+  
+input[type="checkbox"]:checked + .mode-slider {
+    background-color: #7293ae;
+}
+  
+input[type="checkbox"]:checked + .mode-slider:before {
+    transform: translateX(26px);
+}
+
+
+/* Properties for the Grid On/Off Toggle Switch  */
+
+.grid-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.grid-switch input[type="checkbox"] {
+    display: none;
+}
+  
+.grid-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+  
+.grid-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+  
+input[type="checkbox"]:checked + .grid-slider {
+    background-color: #7293ae;
+}
+  
+input[type="checkbox"]:checked + .grid-slider:before {
+    transform: translateX(26px);
+}
+
