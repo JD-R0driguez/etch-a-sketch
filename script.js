@@ -5,17 +5,46 @@ const drawingGrid =  document.getElementById('draw-area');
 const gridSizeSlider = document.getElementById('range-slider');
 const gridSizeText = document.getElementById('size-value'); 
 const gridModeValue = document.getElementById('grid-toggle-switch');
+const drawingModeValue = document.getElementById('mode-toggle-switch')
+const hoverDrawingOn = document.getElementById('hover-on');
+const clickDrawingOn = document.getElementById('click-draw-on');
 
 createDrawingMatrix(DefaultRows, DefaultColumns);
 
 
-//Listener handling the drawing function while hovering
+//Event listeners handling the drawing mode selector
+let hoverDrawing = true;
+let mouseDown =  false;
+
+hoverDrawingOn.classList.add('active');
+
+hoverDrawingOn.addEventListener('click', function(){
+    clickDrawingOn.classList.remove('active');
+    hoverDrawingOn.classList.add('active');
+    hoverDrawing = true;
+});
+
+clickDrawingOn.addEventListener('click', function(){
+    clickDrawingOn.classList.add('active');
+    hoverDrawingOn.classList.remove('active');
+    hoverDrawing = false;
+});
+
+drawingGrid.addEventListener('mousedown', function() {
+    mouseDown = true;
+  });
+  
+drawingGrid.addEventListener('mouseup', function() {
+    mouseDown = false;
+});
+
 drawingGrid.addEventListener('mouseover', function(event) {
-    if (event.target.classList.contains('grid-pixel')) {
+    if (hoverDrawing && event.target.classList.contains('grid-pixel')) {
+      event.target.style.backgroundColor = 'black'; 
+    } else if (!hoverDrawing && mouseDown && event.target.classList.contains('grid-pixel')) {
       event.target.style.backgroundColor = 'red'; 
     }
 });
-
 
 //Event listener handling the grid size text
 gridSizeSlider.addEventListener('input', function(){
