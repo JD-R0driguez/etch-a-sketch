@@ -8,7 +8,54 @@
 
 #main-body {
     display:flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 30px;
+}
+
+.draw-settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    border: 3px solid rgb(117, 111, 111);
+}
+
+#ball-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#color-ball {
+    appearance: none;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: none;
+}
+
+#color-ball::-webkit-color-swatch {
+    border-radius: 20px;
+    border: 2px solid rgba(106, 106, 112, 0.33);
+}
+
+#color-ball::-webkit-color-swatch:hover {
+    border-radius: 20px;
+    border: 3px solid rgba(156, 156, 168, 0.642);
+}
+
+
+.btn.selected {
+    background-color: #232527; /* Change this to the desired background color */
+    color: #fff; /* Change this to the desired text color */
+    border: none;
+}
+
+.btn:hover {
+    background-color: #007bff; /* Change this to the desired background color on hover */
+    color: #fff; /* Change this to the desired text color on hover */
+    border-color: #007bff; /* Change this to the desired border color on hover */
 }
 
 #draw-area {
@@ -25,67 +72,8 @@
     /* border: none; */
 }
 
-.draw-settings{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    border: 3px solid rgb(117, 111, 111);
+#size-value{
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
 }
-
-#grid-settings {
-    border: 5px solid red;
-    display: flex;
-    flex-direction: column;
-}
-
-.active {
-    background-color: #339657;
-    color: #fff;
-}
-
-/* Properties for the Grid On/Off Toggle Switch  */
-
-.grid-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-  
-.grid-switch input[type="checkbox"] {
-    display: none;
-}
-  
-.grid-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
-  
-.grid-slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-  
-input[type="checkbox"]:checked + .grid-slider {
-    background-color: #7293ae;
-}
-  
-input[type="checkbox"]:checked + .grid-slider:before {
-    transform: translateX(26px);
-}
-

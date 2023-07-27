@@ -1,33 +1,60 @@
 const DefaultRows= 16;
 const DefaultColumns= 16;
+let pixelColor = '#000000';
+let rainBowMode = false;
 
 const drawingGrid =  document.getElementById('draw-area');
+const clearGrid = document.getElementById('clear');
+
+const hoverDrawingOn = document.getElementById('hover-mode');
+const clickDrawingOn = document.getElementById('click-mode');
+const gridVisibleOn = document.getElementById('grid-on');
+const gridVisibleOff = document.getElementById('grid-off');
 const gridSizeSlider = document.getElementById('range-slider');
-const gridSizeText = document.getElementById('size-value'); 
-const gridModeValue = document.getElementById('grid-toggle-switch');
-const drawingModeValue = document.getElementById('mode-toggle-switch')
-const hoverDrawingOn = document.getElementById('hover-on');
-const clickDrawingOn = document.getElementById('click-draw-on');
+const gridSizeText = document.getElementById('grid-size'); 
+const colorPick = document.getElementById('color-ball');
+const rainBowModeButton = document.getElementById('multi-color');
+const monoColorButton = document.getElementById('one-color');
+
 
 createDrawingMatrix(DefaultRows, DefaultColumns);
 
+//Event Listener to clear the grid
+clearGrid.addEventListener('click', function(){
+    const pixels = document.querySelectorAll('.grid-pixel');
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = 'white';
+    })
+});    
+
+//Event Listener to handle color selection and color mode
+colorPick.addEventListener('input', function(){
+    pixelColor = colorPick.value;
+});
+
+rainBowModeButton.addEventListener('click', function(){
+    rainBowMode = true;
+});
+
+monoColorButton.addEventListener('click', function(){
+    rainBowMode = false;
+});
 
 //Event listeners handling the drawing mode selector
 let hoverDrawing = true;
 let mouseDown =  false;
-
-hoverDrawingOn.classList.add('active');
+hoverDrawingOn.classList.add('selected');
 
 hoverDrawingOn.addEventListener('click', function(){
-    clickDrawingOn.classList.remove('active');
-    hoverDrawingOn.classList.add('active');
     hoverDrawing = true;
+    hoverDrawingOn.classList.add('selected');
+    clickDrawingOn.classList.remove('selected');
 });
 
 clickDrawingOn.addEventListener('click', function(){
-    clickDrawingOn.classList.add('active');
-    hoverDrawingOn.classList.remove('active');
     hoverDrawing = false;
+    hoverDrawingOn.classList.remove('selected');
+    clickDrawingOn.classList.add('selected');
 });
 
 drawingGrid.addEventListener('mousedown', function() {
@@ -39,17 +66,19 @@ drawingGrid.addEventListener('mouseup', function() {
 });
 
 drawingGrid.addEventListener('mouseover', function(event) {
-    if (hoverDrawing && event.target.classList.contains('grid-pixel')) {
-      event.target.style.backgroundColor = 'black'; 
-    } else if (!hoverDrawing && mouseDown && event.target.classList.contains('grid-pixel')) {
-      event.target.style.backgroundColor = 'red'; 
+    if ((hoverDrawing || (mouseDown && !hoverDrawing)) && event.target.classList.contains('grid-pixel')) {
+      if (rainBowMode){
+        event.target.style.backgroundColor = generateRandomColor(); 
+      }else{
+        event.target.style.backgroundColor = pixelColor;
+      }
     }
 });
 
 //Event listener handling the grid size text
 gridSizeSlider.addEventListener('input', function(){
     const newSize = this.value;
-    gridSizeText.innerHTML = `${newSize} x ${newSize}`;
+    gridSizeText.textContent = `${newSize} x ${newSize}`;
 })
 
 gridSizeSlider.addEventListener('change', function(){
@@ -59,20 +88,20 @@ gridSizeSlider.addEventListener('change', function(){
 
 
 //Event listener handling the Grid On/Off status
-gridModeValue.addEventListener('change', function(){
-    const pixels = document.querySelectorAll('.grid-pixel');
 
-    if (gridModeValue.checked){
-        
-        pixels.forEach(pixel => {
-            pixel.classList.add('grid-pixel-border');
-        });
-    }else{
-        pixels.forEach(pixel => {
-            pixel.classList.remove('grid-pixel-border');
-        });
-    }
-})
+gridVisibleOn.addEventListener('click', function(){
+    const pixels = document.querySelectorAll('.grid-pixel');
+    pixels.forEach(pixel => {
+        pixel.classList.add('grid-pixel-border');
+    });
+});
+
+gridVisibleOff.addEventListener('click', function(){
+    const pixels = document.querySelectorAll('.grid-pixel');
+    pixels.forEach(pixel => {
+        pixel.classList.remove('grid-pixel-border');
+    });
+});
 
 
 //Creates a matrix of div elements and places them inside the grid area
@@ -84,7 +113,7 @@ function createDrawingMatrix (numRows, numColumns){
     for(let i = 0; i < gridMatrix; i++){
         const gridPixel = document.createElement('div');
         gridPixel.classList.add('grid-pixel');
-        if (gridModeValue.checked){
+        if (gridVisibleOn.checked){
             gridPixel.classList.add('grid-pixel-border');
         }
         drawingGrid.appendChild(gridPixel);
@@ -93,16 +122,26 @@ function createDrawingMatrix (numRows, numColumns){
     drawingGrid.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
 }
 
-
-
-/* //Event handler for whe the mouse leaves the pixel
-
-drawingGrid.addEventListener('mouseout', function(event) {
-    if (event.target.classList.contains('grid-pixel')) {
-      event.target.style.backgroundColor = ''; // Reset the background color
-    }
-});
-*/
+//Creates an array of shades based in the current color selection
+function generateRandomColor() {
+    const r = Math.floor(Math.random() * 256); 
+    const g = Math.floor(Math.random() * 256); 
+    const b = Math.floor(Math.random() * 256); 
+  
+    // Convert the RGB values to hexadecimal format
+    const componentToHex = (c) => {
+      const hex = c.toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    };
+  
+    const redHex = componentToHex(r);
+    const greenHex = componentToHex(g);
+    const blueHex = componentToHex(b);
+  
+    const randomColor = "#" + redHex + greenHex + blueHex;
+    return randomColor;
+}
+  
 
 
 
