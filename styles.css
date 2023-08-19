@@ -1,8 +1,12 @@
+.main{
+    background-color: #e1cece;
+}
+
 .title {
     text-align: center;
-    border: 1px solid red;
-    padding: 20px;
-    margin: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 20px 20px 30px 2px;
 }
 
 
@@ -17,8 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 30px;
-    border: 3px solid rgb(117, 111, 111);
+    gap: 20px;
 }
 
 #ball-container{
@@ -37,30 +40,48 @@
 
 #color-ball::-webkit-color-swatch {
     border-radius: 20px;
-    border: 2px solid rgba(106, 106, 112, 0.33);
+    border: 3px solid #eadede;
 }
 
 #color-ball::-webkit-color-swatch:hover {
     border-radius: 20px;
-    border: 3px solid rgba(156, 156, 168, 0.642);
+    border: 3px solid #d97d7d;
 }
 
-
-.btn.selected {
-    background-color: #232527; /* Change this to the desired background color */
-    color: #fff; /* Change this to the desired text color */
-    border: none;
+.btn {
+    border: 2px solid rgb(235, 225, 225) !important;
+    color: #623737 !important;
+    font-weight: 500 !important;
+    background-color: #e3c5c5 !important;
 }
 
 .btn:hover {
-    background-color: #007bff; /* Change this to the desired background color on hover */
-    color: #fff; /* Change this to the desired text color on hover */
-    border-color: #007bff; /* Change this to the desired border color on hover */
+    background-color: #e0a8a8 !important;
+}
+
+.btn.active {
+    background-color: #d97d7d !important;
+    color: #fff !important;
+}
+
+.button-divider{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 0px 20px;
+}
+
+.btn-group{
+    padding: 0px 15px;
+}
+
+input[type="radio"]:checked + .btn {
+    color: #fff !important;
+    background: #d97d7d!important;
 }
 
 #draw-area {
     display: grid;
-    border: 3px solid brown;
     height: 500px;
     width: 500px;
     background-color: #ffffff;
@@ -68,12 +89,23 @@
 }
 
 .grid-pixel-border {
-    border: 0.5pt solid rgba(220, 219, 219, 0.359);
-    /* border: none; */
+    border: 0.5pt solid rgba(227, 223, 223, 0.359);
 }
 
 #size-value{
     text-align: center;
     margin: 0px;
     padding: 0px;
+}
+
+.slider{
+    margin: 0px 50px;
+}
+
+.form-range::-webkit-slider-thumb {
+    background: rgb(220, 98, 98) !important;
+}
+
+#clear {
+    margin: 0px 50px;
 }

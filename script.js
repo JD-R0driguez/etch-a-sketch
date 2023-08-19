@@ -28,33 +28,40 @@ clearGrid.addEventListener('click', function(){
 });    
 
 //Event Listener to handle color selection and color mode
+monoColorButton.classList.add('active');
+
 colorPick.addEventListener('input', function(){
     pixelColor = colorPick.value;
 });
 
 rainBowModeButton.addEventListener('click', function(){
     rainBowMode = true;
+    rainBowModeButton.classList.add('active');
+    monoColorButton.classList.remove('active');
 });
 
 monoColorButton.addEventListener('click', function(){
     rainBowMode = false;
+    monoColorButton.classList.add('active');
+    rainBowModeButton.classList.remove('active');
+    
 });
 
 //Event listeners handling the drawing mode selector
 let hoverDrawing = true;
 let mouseDown =  false;
-hoverDrawingOn.classList.add('selected');
+hoverDrawingOn.classList.add('active');
 
 hoverDrawingOn.addEventListener('click', function(){
     hoverDrawing = true;
-    hoverDrawingOn.classList.add('selected');
-    clickDrawingOn.classList.remove('selected');
+    hoverDrawingOn.classList.add('active');
+    clickDrawingOn.classList.remove('active');
 });
 
 clickDrawingOn.addEventListener('click', function(){
     hoverDrawing = false;
-    hoverDrawingOn.classList.remove('selected');
-    clickDrawingOn.classList.add('selected');
+    hoverDrawingOn.classList.remove('active');
+    clickDrawingOn.classList.add('active');
 });
 
 drawingGrid.addEventListener('mousedown', function() {
@@ -88,8 +95,10 @@ gridSizeSlider.addEventListener('change', function(){
 
 
 //Event listener handling the Grid On/Off status
+gridVisibleOn.classList.add('active');
 
 gridVisibleOn.addEventListener('click', function(){
+    gridVisibleOn.classList.add('active');
     const pixels = document.querySelectorAll('.grid-pixel');
     pixels.forEach(pixel => {
         pixel.classList.add('grid-pixel-border');

@@ -4,54 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Etch a Sketch</title>
 </head>
 <body>
-    <div class="title">Etch a Sketch</div>
-    <div id="main-body">
-        <div class="draw-settings">
+    <div class="main">
+        <div class="title">Etch a Sketch</div>
+        <div id="main-body">
+            <div class="draw-settings">
 
-            <div id="ball-container"> 
-                <input type="color" id="color-ball">
+                <div id="ball-container"> 
+                    <input type="color" id="color-ball" value="#623737">
+                </div>
+
+                <div class="button-divider">
+
+                    <button id="one-color" type="button" class="btn btn-outline-secondary">One Color</button> 
+                    <button id="multi-color" type="button" class="btn btn-outline-secondary">Rainbow Mode</button> 
+
+                    <button id="hover-mode" type="button" class="btn btn-outline-secondary">Hover & Draw</button> 
+                    <button id="click-mode" type="button" class="btn btn-outline-secondary">Click & Draw</button> 
+        
+                </div>
+
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="grid-on" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="grid-on">Grid-On</label>
+                
+                    <input type="radio" class="btn-check" name="btnradio" id="grid-off" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary" for="grid-off">Grid-Off</label>
+                </div>
+
+                <div class="slider">
+                    <div id="size-value" class="settings-text">Pixel Size:<span id="grid-size">16 x 16</span></div>
+                    <input type="range" class="form-range" id="range-slider" min="5" max="100" value="16" step="1">
+                </div>
+
+                <button id="clear" type="button" class="btn btn-outline-secondary">Clear</button> 
+
             </div>
-
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio2" id="one-color" autocomplete="off" checked>
-                <label class="btn btn-outline-secondary" for="one-color">Solid</label>
-              
-                <input type="radio" class="btn-check" name="btnradio2" id="multi-color" autocomplete="off">
-                <label class="btn btn-outline-secondary" for="multi-color">Rainbow</label>
-            </div>
-            
-            <div>
-                <button id="hover-mode" type="button" class="btn btn-outline-secondary">Hover & Draw</button> 
-                <button id="click-mode" type="button" class="btn btn-outline-secondary">Click & Draw</button> 
-            </div>
-            
-
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="grid-on" autocomplete="off" checked>
-                <label class="btn btn-outline-secondary" for="grid-on">Grid-On</label>
-              
-                <input type="radio" class="btn-check" name="btnradio" id="grid-off" autocomplete="off">
-                <label class="btn btn-outline-secondary" for="grid-off">Grid-Off</label>
-            </div>
-
-            <div>
-                <div id="size-value" class="settings-text">Pixel Size:<span id="grid-size">16 x 16</span></div>
-                <input type="range" class="form-range" id="range-slider" min="5" max="100" value="16" step="1">
-            </div>
-
-            <button id="clear" type="button" class="btn btn-outline-secondary">Clear</button> 
-
+            <div id="draw-area"></div>
         </div>
-        <div id="draw-area"></div>
     </div>
+    <footer>
+        <p>JD-R0driguez
+          <a href="https://github.com/yourusername" target="_blank">
+            <i class="fab fa-github github-icon"></i>
+          </a>
+        </p>
+    </footer>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
 </body>
 </html>
