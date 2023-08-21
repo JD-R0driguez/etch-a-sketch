@@ -109,3 +109,14 @@ input[type="radio"]:checked + .btn {
 #clear {
     margin: 0px 50px;
 }
+
+footer {
+    border-top: 5px solid #623737;
+    margin-top: 0px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
