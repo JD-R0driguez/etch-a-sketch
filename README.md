@@ -43,4 +43,4 @@ The goal of this project is to create a fun and interactive drawing application.
 This project is part of The Odin Project's curriculum, designed to help aspiring web developers learn and practice web development skills. The project idea and initial code structure were provided by The Odin Project.
 
 - [The Odin Project](https://www.theodinproject.com/)
-- Original code by [Your Name](https://github.com/JD-R0driguez)
+- Original code by [JD-R0driguez](https://github.com/JD-R0driguez)
