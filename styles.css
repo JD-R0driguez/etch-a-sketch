@@ -116,12 +116,12 @@ footer p{
 }
 
 footer {
+    background-color: #e1cece;
     height: 30px;
-    border-top: 5px solid #623737;
-    margin-top: 0px;
+    margin-top: 30px;
     padding: 5px;
     font-size: 15px;
-    font-weight: 200;
+    font-weight: 300;
     display: flex;
     justify-content: center;
     align-items: center;
