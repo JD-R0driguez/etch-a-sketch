@@ -1,6 +1,7 @@
 .main{
+    padding-top: 2rem;
+    height: 100%;
     background-color: #e1cece;
-    height: 120vh;
 }
 
 .title {
@@ -117,10 +118,9 @@ footer p{
 }
 
 footer {
-    background-color: #e1cece!;
-    height: 30px;
-    margin-top: 30px;
-    padding: 5px;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    background-color: #d97d7d;
     font-size: 15px;
     font-weight: 300;
     display: flex;
