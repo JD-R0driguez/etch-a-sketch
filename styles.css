@@ -116,6 +116,7 @@ footer p{
 }
 
 footer {
+    height: 30px;
     border-top: 5px solid #623737;
     margin-top: 0px;
     padding: 5px;
