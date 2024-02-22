@@ -119,7 +119,7 @@ footer p{
 
 footer {
     margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     background-color: #d97d7d;
     font-size: 15px;
     font-weight: 300;
