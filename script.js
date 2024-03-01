@@ -27,6 +27,16 @@ clearGrid.addEventListener('click', function(){
     })
 });    
 
+drawingGrid.addEventListener('click', function(event) {
+    if (!hoverDrawing && event.target.classList.contains('grid-pixel')) {
+      if (rainBowMode){
+        event.target.style.backgroundColor = generateRandomColor(); 
+      }else{
+        event.target.style.backgroundColor = pixelColor;
+      }
+    }
+});
+
 //Event Listener to handle color selection and color mode
 monoColorButton.classList.add('active');
 
